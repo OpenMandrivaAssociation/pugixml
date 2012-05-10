@@ -10,7 +10,6 @@ Group:		System/Libraries
 License:	MIT
 URL:		http://pugixml.org
 Source0:	http://pugixml.googlecode.com/files/%{name}-%{version}.tar.gz
-Patch0:		pugixml-1.0-set_lib_soversion.patch
 BuildRequires:	cmake
 
 %description
