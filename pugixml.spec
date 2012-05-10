@@ -3,8 +3,8 @@
 %define		develname	%mklibname pugixml -d
 
 Name:		pugixml
-Version:	1.0
-Release:	%mkrel 1
+Version:	1.2
+Release:	1
 Summary:	A light-weight C++ XML processing library
 Group:		System/Libraries
 License:	MIT
@@ -49,14 +49,13 @@ Development files for package %{name} library
 
 %prep
 %setup -q -c %{name}-%{version}
-%patch0 -p0
+#%patch0 -p0
 
 %build
 %cmake ../scripts
 %make
 
 %install
-%__rm -rf %{buildroot}
 mkdir -p %{buildroot}%{_includedir}
 mkdir -p %{buildroot}%{_datadir}/%{name}/contrib
 mkdir -p %{buildroot}%{_libdir}
@@ -66,18 +65,12 @@ install -p -m 0644 src/*.hpp %{buildroot}%{_includedir}/
 install -p -m 0755  build/*.so.* %{buildroot}%{_libdir}/
 mv build/*.so %{buildroot}%{_libdir}/
 
-%clean
-%__rm -rf %{buildroot}
-
 %files -n %{libname}
-%defattr(-,root,root,-)
 %doc readme.txt
 %{_libdir}/*.so.%{major}.*
 
 %files -n %{develname}
-%defattr(-,root,root,-)
 %doc docs/*
 %{_libdir}/*.so
 %{_datadir}/%{name}
 %{_includedir}/*.hpp
-
