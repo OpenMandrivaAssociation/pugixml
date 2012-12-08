@@ -73,3 +73,15 @@ mv build/*.so %{buildroot}%{_libdir}/
 %{_libdir}/*.so
 %{_datadir}/%{name}
 %{_includedir}/*.hpp
+
+
+%changelog
+* Thu May 10 2012 Alexander Khrukin <akhrukin@mandriva.org> 1.2-1
++ Revision: 797888
+- patch removed
+- version update 1.2
+
+* Thu Dec 15 2011 Andrey Bondrov <abondrov@mandriva.org> 1.0-1
++ Revision: 741406
+- imported package pugixml
+
