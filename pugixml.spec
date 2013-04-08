@@ -10,6 +10,7 @@ Group:		System/Libraries
 License:	MIT
 URL:		http://pugixml.org
 Source0:	http://pugixml.googlecode.com/files/%{name}-%{version}.tar.gz
+Source100:	pugixml.rpmlintrc
 BuildRequires:	cmake
 
 %description
