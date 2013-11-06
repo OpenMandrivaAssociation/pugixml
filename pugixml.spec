@@ -1,14 +1,14 @@
-%define		major 1
-%define		libname		%mklibname pugixml %{major}
-%define		develname	%mklibname pugixml -d
+%define major 1
+%define libname	%mklibname pugixml %{major}
+%define devname	%mklibname pugixml -d
 
+Summary:	A light-weight C++ XML processing library
 Name:		pugixml
 Version:	1.2
 Release:	1
-Summary:	A light-weight C++ XML processing library
 Group:		System/Libraries
 License:	MIT
-URL:		http://pugixml.org
+Url:		http://pugixml.org
 Source0:	http://pugixml.googlecode.com/files/%{name}-%{version}.tar.gz
 Source100:	pugixml.rpmlintrc
 BuildRequires:	cmake
@@ -37,19 +37,17 @@ It features:
 - Full Unicode support with Unicode interface variants and automatic encoding
   conversions
 
-%package -n %{develname}
+%package -n %{devname}
 Summary:	Development files for %{name} library
 Group:		Development/C++
 Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
-Provides:	lib%{name}-devel = %{version}-%{release}
 
-%description -n %{develname}
+%description -n %{devname}
 Development files for package %{name} library
 
 %prep
-%setup -q -c %{name}-%{version}
-#%patch0 -p0
+%setup -qc
 
 %build
 %cmake ../scripts
@@ -66,23 +64,12 @@ install -p -m 0755  build/*.so.* %{buildroot}%{_libdir}/
 mv build/*.so %{buildroot}%{_libdir}/
 
 %files -n %{libname}
-%doc readme.txt
-%{_libdir}/*.so.%{major}.*
+%{_libdir}/libpugixml.so.%{major}*
 
-%files -n %{develname}
+%files -n %{devname}
 %doc docs/*
+%doc readme.txt
 %{_libdir}/*.so
 %{_datadir}/%{name}
 %{_includedir}/*.hpp
-
-
-%changelog
-* Thu May 10 2012 Alexander Khrukin <akhrukin@mandriva.org> 1.2-1
-+ Revision: 797888
-- patch removed
-- version update 1.2
-
-* Thu Dec 15 2011 Andrey Bondrov <abondrov@mandriva.org> 1.0-1
-+ Revision: 741406
-- imported package pugixml
 
