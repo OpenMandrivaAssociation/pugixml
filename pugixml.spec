@@ -4,8 +4,8 @@
 
 Summary:	A light-weight C++ XML processing library
 Name:		pugixml
-Version:	1.2
-Release:	9
+Version:	1.6
+Release:	1
 Group:		System/Libraries
 License:	MIT
 Url:		http://pugixml.org
@@ -47,7 +47,7 @@ Provides:	%{name}-devel = %{version}-%{release}
 Development files for package %{name} library
 
 %prep
-%setup -qc
+%setup -q
 
 %build
 %cmake ../scripts

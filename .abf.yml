@@ -1,2 +1,4 @@
+removed_sources:
+  pugixml-1.2.tar.gz: 1eee11df5d61fea31a977d98bd2dcc9421231f9e
 sources:
-  "pugixml-1.2.tar.gz": 1eee11df5d61fea31a977d98bd2dcc9421231f9e
+  pugixml-1.6.tar.gz: 0c22fc238b209c9fd1802b74927f0b1e9f68011c
