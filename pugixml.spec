@@ -4,8 +4,8 @@
 
 Summary:	A light-weight C++ XML processing library
 Name:		pugixml
-Version:	1.6
-Release:	2
+Version:	1.7
+Release:	1
 Group:		System/Libraries
 License:	MIT
 Url:		http://pugixml.org
@@ -62,8 +62,7 @@ mkdir -p %{buildroot}%{_libdir}
 
 install -p -m 0644 contrib/* %{buildroot}%{_datadir}/%{name}/contrib/
 install -p -m 0644 src/*.hpp %{buildroot}%{_includedir}/
-install -p -m 0755  build/*.so.* %{buildroot}%{_libdir}/
-mv build/*.so %{buildroot}%{_libdir}/
+cp -a build/*.so* %{buildroot}%{_libdir}/
 
 %files -n %{libname}
 %{_libdir}/libpugixml.so.%{major}*
