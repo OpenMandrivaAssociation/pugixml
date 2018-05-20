@@ -4,14 +4,14 @@
 
 Summary:	A light-weight C++ XML processing library
 Name:		pugixml
-Version:	1.7
+Version:	1.9
 Release:	1
 Group:		System/Libraries
 License:	MIT
 Url:		http://pugixml.org
-Source0:	http://pugixml.googlecode.com/files/%{name}-%{version}.tar.gz
+Source0:	http://github.com/zeux/pugixml/releases/download/v%{version}/pugixml-%{version}.tar.gz
 Source100:	pugixml.rpmlintrc
-BuildRequires:	cmake
+BuildRequires:	cmake ninja
 
 %description
 pugixml is a light-weight C++ XML processing library.
@@ -50,19 +50,14 @@ Development files for package %{name} library
 %setup -q
 
 %build
-export CXXFLAGS="%{optflags} -std=gnu++11"
-
-%cmake ../scripts
-%make
+%cmake -G Ninja
+%ninja_build
 
 %install
-mkdir -p %{buildroot}%{_includedir}
-mkdir -p %{buildroot}%{_datadir}/%{name}/contrib
-mkdir -p %{buildroot}%{_libdir}
+%ninja_install -C build
 
+mkdir -p %{buildroot}%{_datadir}/%{name}/contrib
 install -p -m 0644 contrib/* %{buildroot}%{_datadir}/%{name}/contrib/
-install -p -m 0644 src/*.hpp %{buildroot}%{_includedir}/
-cp -a build/*.so* %{buildroot}%{_libdir}/
 
 %files -n %{libname}
 %{_libdir}/libpugixml.so.%{major}*
@@ -73,4 +68,4 @@ cp -a build/*.so* %{buildroot}%{_libdir}/
 %{_libdir}/*.so
 %{_datadir}/%{name}
 %{_includedir}/*.hpp
-
+%{_libdir}/cmake/pugixml
