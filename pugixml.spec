@@ -66,6 +66,6 @@ Development files for package %{name} library
 %doc docs/*
 %doc readme.txt
 %{_libdir}/*.so
-#{_datadir}/%{name}
+%{_libdir}/pkgconfig/pugixml.pc
 %{_includedir}/*.hpp
 %{_libdir}/cmake/pugixml
