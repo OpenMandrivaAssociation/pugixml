@@ -56,8 +56,8 @@ Development files for package %{name} library
 %install
 %ninja_install -C build
 
-mkdir -p %{buildroot}%{_datadir}/%{name}/contrib
-install -p -m 0644 contrib/* %{buildroot}%{_datadir}/%{name}/contrib/
+#mkdir -p %{buildroot}%{_datadir}/%{name}/contrib
+#install -p -m 0644 contrib/* %{buildroot}%{_datadir}/%{name}/contrib/
 
 %files -n %{libname}
 %{_libdir}/libpugixml.so.%{major}*
