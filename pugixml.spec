@@ -1,3 +1,5 @@
+%define _disable_lto 1
+
 %define major 1
 %define libname	%mklibname pugixml %{major}
 %define devname	%mklibname pugixml -d
@@ -50,6 +52,8 @@ Development files for package %{name} library
 %setup -q
 
 %build
+export CC=gcc
+export CXX=g++
 %cmake -G Ninja
 %ninja_build
 
