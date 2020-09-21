@@ -1,11 +1,13 @@
+%define _disable_lto 1
+
 %define major 1
 %define libname	%mklibname pugixml %{major}
 %define devname	%mklibname pugixml -d
 
 Summary:	A light-weight C++ XML processing library
 Name:		pugixml
-Version:	1.9
-Release:	2
+Version:	1.10
+Release:	1
 Group:		System/Libraries
 License:	MIT
 Url:		http://pugixml.org
@@ -50,14 +52,16 @@ Development files for package %{name} library
 %setup -q
 
 %build
+export CC=gcc
+export CXX=g++
 %cmake -G Ninja
 %ninja_build
 
 %install
 %ninja_install -C build
 
-mkdir -p %{buildroot}%{_datadir}/%{name}/contrib
-install -p -m 0644 contrib/* %{buildroot}%{_datadir}/%{name}/contrib/
+#mkdir -p %{buildroot}%{_datadir}/%{name}/contrib
+#install -p -m 0644 contrib/* %{buildroot}%{_datadir}/%{name}/contrib/
 
 %files -n %{libname}
 %{_libdir}/libpugixml.so.%{major}*
@@ -66,6 +70,6 @@ install -p -m 0644 contrib/* %{buildroot}%{_datadir}/%{name}/contrib/
 %doc docs/*
 %doc readme.txt
 %{_libdir}/*.so
-%{_datadir}/%{name}
+%{_libdir}/pkgconfig/pugixml.pc
 %{_includedir}/*.hpp
 %{_libdir}/cmake/pugixml
