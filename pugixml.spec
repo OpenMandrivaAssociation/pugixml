@@ -10,7 +10,7 @@ Version:	1.14
 Release:	1
 Group:		System/Libraries
 License:	MIT
-Url:		http://pugixml.org
+Url:		https://pugixml.org
 Source0:	http://github.com/zeux/pugixml/releases/download/v%{version}/pugixml-%{version}.tar.gz
 Source100:	pugixml.rpmlintrc
 BuildRequires:	cmake ninja
